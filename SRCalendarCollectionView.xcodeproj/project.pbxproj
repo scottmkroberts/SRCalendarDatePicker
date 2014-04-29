@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18E3B69A190AA924000A0491 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E3B699190AA924000A0491 /* QuartzCore.framework */; };
+		18E3B69C190AA936000A0491 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E3B69B190AA936000A0491 /* CFNetwork.framework */; };
 		18E9F5F019098D2E006222AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E9F5EF19098D2E006222AB /* Foundation.framework */; };
 		18E9F5F219098D2E006222AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E9F5F119098D2E006222AB /* CoreGraphics.framework */; };
 		18E9F5F419098D2E006222AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E9F5F319098D2E006222AB /* UIKit.framework */; };
@@ -21,6 +23,8 @@
 		18E9F61119098D2E006222AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E9F5F319098D2E006222AB /* UIKit.framework */; };
 		18E9F61919098D2E006222AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18E9F61719098D2E006222AB /* InfoPlist.strings */; };
 		18E9F61B19098D2E006222AB /* SRCalendarCollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9F61A19098D2E006222AB /* SRCalendarCollectionViewTests.m */; };
+		18E9F62719099B68006222AB /* SRCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9F62619099B68006222AB /* SRCalendarCollectionViewLayout.m */; };
+		18E9F62A1909B26D006222AB /* SRCalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9F6291909B26D006222AB /* SRCalendarCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18E3B699190AA924000A0491 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		18E3B69B190AA936000A0491 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		18E3B69D190AAB5A000A0491 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		18E9F5EC19098D2E006222AB /* SRCalendarCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRCalendarCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E9F5EF19098D2E006222AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18E9F5F119098D2E006222AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +60,10 @@
 		18E9F61619098D2E006222AB /* SRCalendarCollectionViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SRCalendarCollectionViewTests-Info.plist"; sourceTree = "<group>"; };
 		18E9F61819098D2E006222AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18E9F61A19098D2E006222AB /* SRCalendarCollectionViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRCalendarCollectionViewTests.m; sourceTree = "<group>"; };
+		18E9F62519099B68006222AB /* SRCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCalendarCollectionViewLayout.h; path = CollectionView/SRCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		18E9F62619099B68006222AB /* SRCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCalendarCollectionViewLayout.m; path = CollectionView/SRCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		18E9F6281909B26D006222AB /* SRCalendarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCalendarCollectionViewCell.h; path = CollectionView/SRCalendarCollectionViewCell.h; sourceTree = "<group>"; };
+		18E9F6291909B26D006222AB /* SRCalendarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCalendarCollectionViewCell.m; path = CollectionView/SRCalendarCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E3B69C190AA936000A0491 /* CFNetwork.framework in Frameworks */,
 				18E9F5F219098D2E006222AB /* CoreGraphics.framework in Frameworks */,
+				18E3B69A190AA924000A0491 /* QuartzCore.framework in Frameworks */,
 				18E9F5F419098D2E006222AB /* UIKit.framework in Frameworks */,
 				18E9F5F019098D2E006222AB /* Foundation.framework in Frameworks */,
 			);
@@ -101,6 +114,9 @@
 		18E9F5EE19098D2E006222AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18E3B69D190AAB5A000A0491 /* Reveal.framework */,
+				18E3B69B190AA936000A0491 /* CFNetwork.framework */,
+				18E3B699190AA924000A0491 /* QuartzCore.framework */,
 				18E9F5EF19098D2E006222AB /* Foundation.framework */,
 				18E9F5F119098D2E006222AB /* CoreGraphics.framework */,
 				18E9F5F319098D2E006222AB /* UIKit.framework */,
@@ -112,6 +128,7 @@
 		18E9F5F519098D2E006222AB /* SRCalendarCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				18E9F62419099B35006222AB /* CollectionView */,
 				18E9F5FE19098D2E006222AB /* SRAppDelegate.h */,
 				18E9F5FF19098D2E006222AB /* SRAppDelegate.m */,
 				18E9F60119098D2E006222AB /* Main.storyboard */,
@@ -150,6 +167,17 @@
 				18E9F61719098D2E006222AB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18E9F62419099B35006222AB /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				18E9F62519099B68006222AB /* SRCalendarCollectionViewLayout.h */,
+				18E9F62619099B68006222AB /* SRCalendarCollectionViewLayout.m */,
+				18E9F6281909B26D006222AB /* SRCalendarCollectionViewCell.h */,
+				18E9F6291909B26D006222AB /* SRCalendarCollectionViewCell.m */,
+			);
+			name = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,7 +280,9 @@
 			files = (
 				18E9F5FC19098D2E006222AB /* main.m in Sources */,
 				18E9F60619098D2E006222AB /* SRViewController.m in Sources */,
+				18E9F62719099B68006222AB /* SRCalendarCollectionViewLayout.m in Sources */,
 				18E9F60019098D2E006222AB /* SRAppDelegate.m in Sources */,
+				18E9F62A1909B26D006222AB /* SRCalendarCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,9 +407,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SRCalendarCollectionView/SRCalendarCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "SRCalendarCollectionView/SRCalendarCollectionView-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -390,9 +430,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SRCalendarCollectionView/SRCalendarCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "SRCalendarCollectionView/SRCalendarCollectionView-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -457,6 +503,7 @@
 				18E9F62019098D2E006222AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18E9F62119098D2E006222AB /* Build configuration list for PBXNativeTarget "SRCalendarCollectionViewTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +512,7 @@
 				18E9F62319098D2E006222AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
