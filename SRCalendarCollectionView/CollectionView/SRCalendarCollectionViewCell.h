@@ -12,5 +12,4 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *dayOfMonthLabel;
 
-
 @end

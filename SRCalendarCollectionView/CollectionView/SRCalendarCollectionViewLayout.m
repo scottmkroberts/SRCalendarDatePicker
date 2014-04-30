@@ -25,7 +25,7 @@ const NSInteger kMaxCellSpacing = 9;
 - (void)setup{
     [self setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     //self.sectionInset = UIEdgeInsetsMake(10.0f, 0.0f, 10.0f, 0.0f);
-    self.itemSize = CGSizeMake(35.f, 40.f);
+    self.itemSize = CGSizeMake(35.f, 35.f);
     [self setHeaderReferenceSize:CGSizeMake(320, 50)];
     [self setFooterReferenceSize:CGSizeMake(320, 50)];
     self.minimumLineSpacing = 10.0f;

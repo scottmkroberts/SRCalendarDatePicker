@@ -7,21 +7,54 @@
 //
 
 #import "SRCalendarCollectionViewCell.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface SRCalendarCollectionViewCell ()
+
+@property (nonatomic, strong) UIView *circleBackgroundView;
+
+@end
 
 @implementation SRCalendarCollectionViewCell
+
+-(void)setRoundedView:(UIView *)roundedView toDiameter:(float)newSize;
+{
+    CGPoint saveCenter = roundedView.center;
+    CGRect newFrame = CGRectMake(roundedView.frame.origin.x, roundedView.frame.origin.y, newSize, newSize);
+    roundedView.frame = newFrame;
+    roundedView.layer.cornerRadius = newSize / 2.0;
+    roundedView.center = saveCenter;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
 
-    //Day of Month
-    self.dayOfMonthLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 4, CGRectGetWidth(self.contentView.frame), 15)];
-    self.dayOfMonthLabel.textColor = [UIColor blackColor];
-    self.dayOfMonthLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
-    [self.contentView addSubview:self.dayOfMonthLabel];
-    
+        //self.backgroundColor = [UIColor redColor];
+            
+        //Day of Month
+        self.dayOfMonthLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.frame), CGRectGetHeight(self.contentView.frame))];
+        self.dayOfMonthLabel.textColor = [UIColor blackColor];
+        self.dayOfMonthLabel.highlightedTextColor = [UIColor whiteColor];
+        self.dayOfMonthLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
+        self.dayOfMonthLabel.textAlignment = NSTextAlignmentCenter;
+            
+        [self.contentView addSubview:self.dayOfMonthLabel];
+
+        UIView* backgroundView = [[UIView alloc] initWithFrame:self.bounds];
+        //backgroundView.backgroundColor = [UIColor c];
+        self.backgroundView = backgroundView;
         
+        UIView* selectedBGView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35.0, 35.0)];
+        selectedBGView.layer.cornerRadius = selectedBGView.bounds.size.width/2;
+        selectedBGView.layer.masksToBounds = YES;
+        selectedBGView.backgroundColor = [UIColor redColor];
+           // [self setRoundedView:selectedBGView toDiameter:40.0];
+        self.selectedBackgroundView = selectedBGView;
+        
+        
+            
     }
     return self;
 }
@@ -35,6 +68,7 @@
 //    
 //    
 //}
+
 
 
 @end
