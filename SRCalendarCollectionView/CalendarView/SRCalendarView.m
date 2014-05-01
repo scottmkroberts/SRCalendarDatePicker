@@ -31,6 +31,7 @@
 //Stores the 3 weeks
 @property (nonatomic, strong) NSArray *previousWeek ,*currentWeek, *nextWeek;
 
+@property (nonatomic) NSUInteger weekdayNumber;
 @end
 
 @implementation SRCalendarView
@@ -79,6 +80,8 @@ static NSString *CellIdentifier = @"CalendarCell";
     [inFormat setDateFormat:@"EEEE dd MMMM yyyy"];
     self.dateDescription.text = [NSString stringWithFormat:@"%@", [inFormat stringFromDate:date]];
     self.lastSelectedDate =  [inFormat dateFromString:self.dateDescription.text];
+    self.weekdayNumber = [self.calendar ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:date];
+
 }
 
 -(void)createDataSet{
@@ -273,17 +276,22 @@ static NSString *CellIdentifier = @"CalendarCell";
 {
     SRCalendarCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CalendarCell" forIndexPath:indexPath];
     //cell.backgroundColor = [UIColor whiteColor];
-    
-    
+
     NSDate *date = [self.daysOfTheWeek objectAtIndex:indexPath.row];
     
-    if([date compare:self.lastSelectedDate] == NSOrderedSame){
-        NSLog(@"Same Date  %@  = %@", date, self.lastSelectedDate);
+    NSDateFormatter *inFormat = [[NSDateFormatter alloc] init];
+    [inFormat setDateFormat:@"EEEE"];
+    NSString *date1 = [inFormat stringFromDate:date];
+    NSString *date2 = [inFormat stringFromDate:self.lastSelectedDate];
+
+    NSLog(@"date1 = %@ |  date2 = %@", date1, date2);
+   
+    if([date1 isEqualToString:date2]){
         cell.selected = YES;
     }else{
         cell.selected = NO;
     }
-
+    
     NSDateComponents *todayComponents = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSWeekOfYearCalendarUnit fromDate:date];
     cell.dayOfMonthLabel.text = [NSString stringWithFormat:@"%ld", (long)[todayComponents day]];
     
