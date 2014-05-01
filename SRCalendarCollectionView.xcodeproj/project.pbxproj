@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183B7ABF19125B6E00B3B35F /* SRCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B7ABE19125B6E00B3B35F /* SRCalendarView.m */; };
+		183B7AC31912664B00B3B35F /* SRExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B7AC21912664B00B3B35F /* SRExampleViewController.m */; };
 		18E3B69A190AA924000A0491 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E3B699190AA924000A0491 /* QuartzCore.framework */; };
 		18E3B69C190AA936000A0491 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E3B69B190AA936000A0491 /* CFNetwork.framework */; };
 		18E9F5F019098D2E006222AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E9F5EF19098D2E006222AB /* Foundation.framework */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183B7ABD19125B6E00B3B35F /* SRCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCalendarView.h; path = CalendarView/SRCalendarView.h; sourceTree = "<group>"; };
+		183B7ABE19125B6E00B3B35F /* SRCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCalendarView.m; path = CalendarView/SRCalendarView.m; sourceTree = "<group>"; };
+		183B7AC11912664B00B3B35F /* SRExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRExampleViewController.h; sourceTree = "<group>"; };
+		183B7AC21912664B00B3B35F /* SRExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRExampleViewController.m; sourceTree = "<group>"; };
 		18E3B699190AA924000A0491 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		18E3B69B190AA936000A0491 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		18E3B69D190AAB5A000A0491 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
@@ -92,6 +98,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		183B7ABC19125B3F00B3B35F /* SRCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				183B7ABD19125B6E00B3B35F /* SRCalendarView.h */,
+				183B7ABE19125B6E00B3B35F /* SRCalendarView.m */,
+			);
+			name = SRCalendarView;
+			sourceTree = "<group>";
+		};
+		183B7AC01912663200B3B35F /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				18E9F60419098D2E006222AB /* SRViewController.h */,
+				18E9F60519098D2E006222AB /* SRViewController.m */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
 		18E9F5E319098D2E006222AB = {
 			isa = PBXGroup;
 			children = (
@@ -128,14 +152,16 @@
 		18E9F5F519098D2E006222AB /* SRCalendarCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				183B7AC01912663200B3B35F /* Unused */,
+				183B7ABC19125B3F00B3B35F /* SRCalendarView */,
 				18E9F62419099B35006222AB /* CollectionView */,
 				18E9F5FE19098D2E006222AB /* SRAppDelegate.h */,
 				18E9F5FF19098D2E006222AB /* SRAppDelegate.m */,
 				18E9F60119098D2E006222AB /* Main.storyboard */,
-				18E9F60419098D2E006222AB /* SRViewController.h */,
-				18E9F60519098D2E006222AB /* SRViewController.m */,
 				18E9F60719098D2E006222AB /* Images.xcassets */,
 				18E9F5F619098D2E006222AB /* Supporting Files */,
+				183B7AC11912664B00B3B35F /* SRExampleViewController.h */,
+				183B7AC21912664B00B3B35F /* SRExampleViewController.m */,
 			);
 			path = SRCalendarCollectionView;
 			sourceTree = "<group>";
@@ -279,6 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E9F5FC19098D2E006222AB /* main.m in Sources */,
+				183B7ABF19125B6E00B3B35F /* SRCalendarView.m in Sources */,
+				183B7AC31912664B00B3B35F /* SRExampleViewController.m in Sources */,
 				18E9F60619098D2E006222AB /* SRViewController.m in Sources */,
 				18E9F62719099B68006222AB /* SRCalendarCollectionViewLayout.m in Sources */,
 				18E9F60019098D2E006222AB /* SRAppDelegate.m in Sources */,
