@@ -72,6 +72,18 @@ static NSString *CellIdentifier = @"CalendarCell";
     return ([date1 compare:date2] == NSOrderedSame);
 }
 
+-(NSString *)dayFromDate:(NSDate *)date{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"EEEE"];
+    return [format stringFromDate:date];
+}
+
+-(NSString *)dateOnlyFromDate:(NSDate *)date{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    return [dateFormat stringFromDate:date];
+}
+
 #pragma mark -
 #pragma mark - Helpers
 
@@ -92,17 +104,32 @@ static NSString *CellIdentifier = @"CalendarCell";
     self.daysOfTheWeek = [oneArray copy];
 }
 
+-(void)selectDefaultCell{
+    
+    //[self collectionView:yourView didSelectItemAtIndexPath:yourIndexPath]
+}
+
 #pragma mark -
 #pragma mark Data
 
+-(void)updateDateAfterShiftWithDay:(int)day{
+    NSDateComponents *oneWeek = [[NSDateComponents alloc] init];
+    [oneWeek setDay:day];
+    self.lastSelectedDate = [self.calendar dateByAddingComponents:oneWeek toDate:self.lastSelectedDate options:0];
+    [self updateDateDescriptionLabelWithDate:self.lastSelectedDate];
+    
+}
+
 -(void)shiftCalendarLeft{
     self.currentWeekNumber = [NSNumber numberWithInteger:[self.currentWeekNumber intValue] - 1];
+    [self updateDateAfterShiftWithDay:-7];
     [self buildCalendarData];
 }
 
 -(void)shiftCalendarRight{
     
     self.currentWeekNumber = [NSNumber numberWithInteger:[self.currentWeekNumber intValue] + 1];
+    [self updateDateAfterShiftWithDay:+7];
     [self buildCalendarData];
 }
 
@@ -122,6 +149,13 @@ static NSString *CellIdentifier = @"CalendarCell";
 
 #pragma mark - 
 #pragma mark Steup
+
+-(void)defaults{
+    
+    self.dateLabelColor = [UIColor blackColor];
+    self.dateLabelTodayColor = [UIColor redColor];
+    
+}
 
 -(void)addHeader{
     
@@ -245,6 +279,7 @@ static NSString *CellIdentifier = @"CalendarCell";
         [self setupData];
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:10 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 
+        [self defaults];
     
     
     }
@@ -279,18 +314,47 @@ static NSString *CellIdentifier = @"CalendarCell";
 
     NSDate *date = [self.daysOfTheWeek objectAtIndex:indexPath.row];
     
-    NSDateFormatter *inFormat = [[NSDateFormatter alloc] init];
-    [inFormat setDateFormat:@"EEEE"];
-    NSString *date1 = [inFormat stringFromDate:date];
-    NSString *date2 = [inFormat stringFromDate:self.lastSelectedDate];
 
-    NSLog(@"date1 = %@ |  date2 = %@", date1, date2);
-   
-    if([date1 isEqualToString:date2]){
+    //Date comparisons
+    NSString *indexRowDate = [self dayFromDate:date];
+    NSString *lastSelectedRowDate = [self dayFromDate:self.lastSelectedDate];
+    
+    NSString *today = [self dateOnlyFromDate:[NSDate date]];
+    NSString *lastSelectedRowDate2 = [self dateOnlyFromDate:self.lastSelectedDate];
+    NSString *indexRowDate2 = [self dateOnlyFromDate:date];
+
+    NSLog(@"date1 = %@ |  date2 = %@", indexRowDate, lastSelectedRowDate);
+
+    
+    //Check if it is today and not selected
+    if([today isEqualToString:indexRowDate2] && !cell.selected){
+        cell.dayOfMonthLabel.textColor = self.dateLabelTodayColor; //Color 1
+    }else{
+        cell.dayOfMonthLabel.textColor = self.dateLabelColor; //Color 2
+    }
+
+    
+    
+    if([indexRowDate isEqualToString:lastSelectedRowDate]){
+        
+        //is it today?
+              if([today isEqualToString:lastSelectedRowDate2]){
+            
+            cell.selectedBGView.backgroundColor = [UIColor redColor];
+        }else{
+            cell.selectedBGView.backgroundColor = [UIColor blackColor];
+        }
+
         cell.selected = YES;
     }else{
         cell.selected = NO;
     }
+    
+    // Change the label for today if today is not selected
+
+
+    
+
     
     NSDateComponents *todayComponents = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSWeekOfYearCalendarUnit fromDate:date];
     cell.dayOfMonthLabel.text = [NSString stringWithFormat:@"%ld", (long)[todayComponents day]];

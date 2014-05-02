@@ -10,4 +10,10 @@
 
 @interface SRCalendarView : UIView
 
+//The color all date labels will be
+@property (nonatomic, strong) UIColor *dateLabelColor;
+
+//The color of the date label today will be when not selected
+@property (nonatomic, strong) UIColor *dateLabelTodayColor;
+
 @end

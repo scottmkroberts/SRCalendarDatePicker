@@ -11,5 +11,5 @@
 @interface SRCalendarCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *dayOfMonthLabel;
-
+@property (nonatomic, strong) UIView *selectedBGView;
 @end

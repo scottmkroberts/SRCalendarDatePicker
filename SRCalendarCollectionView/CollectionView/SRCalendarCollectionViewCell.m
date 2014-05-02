@@ -46,12 +46,12 @@
         //backgroundView.backgroundColor = [UIColor c];
         self.backgroundView = backgroundView;
         
-        UIView* selectedBGView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35.0, 35.0)];
-        selectedBGView.layer.cornerRadius = selectedBGView.bounds.size.width/2;
-        selectedBGView.layer.masksToBounds = YES;
-        selectedBGView.backgroundColor = [UIColor redColor];
+        self.selectedBGView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35.0, 35.0)];
+        self.selectedBGView.layer.cornerRadius = self.selectedBGView.bounds.size.width/2;
+        self.selectedBGView.layer.masksToBounds = YES;
+        self.selectedBGView.backgroundColor = [UIColor redColor];
            // [self setRoundedView:selectedBGView toDiameter:40.0];
-        self.selectedBackgroundView = selectedBGView;
+        self.selectedBackgroundView = self.selectedBGView;
         
         
             
