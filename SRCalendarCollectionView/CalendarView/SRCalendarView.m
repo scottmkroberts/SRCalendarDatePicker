@@ -20,7 +20,7 @@
 @property (nonatomic, assign) CGFloat lastContentOffset;
 
 @property (nonatomic, strong) NSNumber *currentWeekNumber, *currentWeekDay, *currentYear;
-@property (nonatomic, strong)  NSCalendar *calendar;
+@property (nonatomic, strong) NSCalendar *calendar;
 
 @property (nonatomic, strong) UILabel *dateDescription;
 
@@ -90,10 +90,25 @@ static NSString *CellIdentifier = @"CalendarCell";
 -(void)updateDateDescriptionLabelWithDate:(NSDate *)date{
     NSDateFormatter *inFormat = [[NSDateFormatter alloc] init];
     [inFormat setDateFormat:@"EEEE dd MMMM yyyy"];
-    self.dateDescription.text = [NSString stringWithFormat:@"%@", [inFormat stringFromDate:date]];
-    self.lastSelectedDate =  [inFormat dateFromString:self.dateDescription.text];
-    self.weekdayNumber = [self.calendar ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:date];
+  
+    [UIView animateWithDuration:0.5
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         
+                         self.dateDescription.alpha = 0.0f;
 
+                         self.dateDescription.text = [NSString stringWithFormat:@"%@", [inFormat stringFromDate:date]];
+                         self.lastSelectedDate =  [inFormat dateFromString:self.dateDescription.text];
+                         self.weekdayNumber = [self.calendar ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:date];
+
+                         self.dateDescription.alpha = 1.0f;
+                     }
+                     completion:^(BOOL finished){
+                         
+
+                     }];
+    
 }
 
 -(void)createDataSet{
@@ -102,6 +117,9 @@ static NSString *CellIdentifier = @"CalendarCell";
     [oneArray addObjectsFromArray:self.currentWeek];
     [oneArray addObjectsFromArray:self.nextWeek];
     self.daysOfTheWeek = [oneArray copy];
+    
+    NSLog(@"days of the week data = %@", self.daysOfTheWeek);
+    
 }
 
 -(void)selectDefaultCell{
@@ -143,8 +161,24 @@ static NSString *CellIdentifier = @"CalendarCell";
     [self createDataSet];
     
     [self.collectionView reloadData];
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:10 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+
     
+     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+
+
+    
+//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:8 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+//    
+
+    
+}
+
+#pragma mark -
+#pragma mark - Setters
+
+-(void)setCalendarBackgroundColor:(UIColor *)calendarBackgroundColor{
+    _calendarBackgroundColor = calendarBackgroundColor;
+    self.backgroundColor = self.calendarBackgroundColor;
 }
 
 #pragma mark - 
@@ -154,7 +188,7 @@ static NSString *CellIdentifier = @"CalendarCell";
     
     self.dateLabelColor = [UIColor blackColor];
     self.dateLabelTodayColor = [UIColor redColor];
-    
+    self.calendarBackgroundColor = [UIColor whiteColor];
 }
 
 -(void)addHeader{
@@ -195,12 +229,12 @@ static NSString *CellIdentifier = @"CalendarCell";
 
 -(void)addCollectionView{
     self.collectionViewLayout = [[SRCalendarCollectionViewLayout alloc] init];
-
+    
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 40.0, CGRectGetWidth(self.frame), 40.0f) collectionViewLayout:self.collectionViewLayout];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     
     [self.collectionView registerClass:[SRCalendarCollectionViewCell class] forCellWithReuseIdentifier:@"CalendarCell"];
     [self.collectionView registerClass:[SRCalendarCollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
@@ -271,7 +305,7 @@ static NSString *CellIdentifier = @"CalendarCell";
 
         
         self.frame = CGRectMake(0, 20, 320.0f, 120);
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = self.calendarBackgroundColor;
         
         [self addHeader];
         [self addFooter];
@@ -310,7 +344,6 @@ static NSString *CellIdentifier = @"CalendarCell";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SRCalendarCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CalendarCell" forIndexPath:indexPath];
-    //cell.backgroundColor = [UIColor whiteColor];
 
     NSDate *date = [self.daysOfTheWeek objectAtIndex:indexPath.row];
     
@@ -324,7 +357,6 @@ static NSString *CellIdentifier = @"CalendarCell";
     NSString *indexRowDate2 = [self dateOnlyFromDate:date];
 
     NSLog(@"date1 = %@ |  date2 = %@", indexRowDate, lastSelectedRowDate);
-
     
     //Check if it is today and not selected
     if([today isEqualToString:indexRowDate2] && !cell.selected){
@@ -334,27 +366,27 @@ static NSString *CellIdentifier = @"CalendarCell";
     }
 
     
-    
-    if([indexRowDate isEqualToString:lastSelectedRowDate]){
-        
-        //is it today?
-              if([today isEqualToString:lastSelectedRowDate2]){
-            
-            cell.selectedBGView.backgroundColor = [UIColor redColor];
-        }else{
-            cell.selectedBGView.backgroundColor = [UIColor blackColor];
-        }
-
+    //Hightlight selected date
+    if([indexRowDate2 isEqualToString:lastSelectedRowDate2]){
         cell.selected = YES;
-    }else{
-        cell.selected = NO;
     }
     
-    // Change the label for today if today is not selected
-
-
     
-
+//
+//    if([indexRowDate isEqualToString:lastSelectedRowDate]){
+//        
+//        //is it today?
+//        if([today isEqualToString:lastSelectedRowDate2]){
+//            
+//            cell.selectedBGView.backgroundColor = [UIColor redColor];
+//        }else{
+//            cell.selectedBGView.backgroundColor = [UIColor blackColor];
+//        }
+//
+//        cell.selected = YES;
+//    }else{
+//        cell.selected = NO;
+//    }
     
     NSDateComponents *todayComponents = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSWeekOfYearCalendarUnit fromDate:date];
     cell.dayOfMonthLabel.text = [NSString stringWithFormat:@"%ld", (long)[todayComponents day]];

@@ -29,6 +29,8 @@
     [super viewDidLoad];
 
     SRCalendarView *calView = [[SRCalendarView alloc] init];
+    //calView.calendarBackgroundColor = [UIColor redColor];
+    
     [self.view addSubview:calView];
 }
 
